@@ -1,13 +1,13 @@
-package com.example.lab5;
+package com.example.lab5_20206331;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Lab5Application {
+public class Lab520206331Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Lab5Application.class, args);
+		SpringApplication.run(Lab520206331Application.class, args);
 	}
 
 }
