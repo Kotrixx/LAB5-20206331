@@ -4,34 +4,46 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
-        <title>Lista Transportistas</title>
+        <title>Lista de viajes programados</title>
     </head>
     <body>
         <main>
             <div class="container px-4 py-5">
-                <h1 class="pb-2 border-bottom">Lista de transportistas</h1>
+                <h1 class="pb-2 border-bottom">Lista de viajes programados</h1>
                 <div class="d-flex mt-3 mb-4">
-                    <a class="btn btn-primary" th:href="@{'/shipper/new'}">Nuevo Transportista</a>
+                    <a class="btn btn-primary" th:href="@{'/viajes/nuevo'}">Nuevo Viaje</a>
                     <a class="btn btn-secondary ms-auto" th:href="@{'/'}">Regresar</a>
                 </div>
-                <form method="post" th:action="@{/templates/mascotas/BuscarTransportistas}">
+                <form method="post" th:action="@{/mascotas/BuscarTransportistas}">
                     <input name="searchField" class="form-control mb-3" type="text" placeholder="Search"/>
                 </form>
                 <table class="table">
                     <tr>
                         <th>#</th>
-                        <th>Nombre de la compañia</th>
-                        <th>Teléfono</th>
+                        <th>Punto de recojo</th>
+                        <th>Cantidad de personas</th>
+                        <th>Cantidad de perros</th>
+                        <th>Selector de personas</th>
+                        <th>Selector de lugares</th>
+                        <th></th>
+                        <th></th>
                         <th></th>
                         <th></th>
                     </tr>
-                    <tr th:each="shipper, info : ${shipperList}">
+                    <tr th:each="viaje, info : ${listaViaje}">
                         <td th:text="${info.index + 1}"></td>
-                        <td th:text="${shipper.companyName}"></td>
-                        <td th:text="${shipper.phone}"></td>
-                        <td><a class="btn btn-primary" th:href="@{'/shipper/edit?id=' + ${shipper.shipperId}}">Editar</a>
+                        <td th:text="${viaje.puntoRecojo}"></td>
+                        <td th:text="${viaje.cantPersonas}"></td>
+                        <td th:text="${viaje.cantPerros}"></td>
+
+                        <td th:text="${viaje.persona.nombre}"></td>
+                        <td th:text="${viaje.lugar.nombreLugar}"></td>
+                        <td><a class="btn btn-primary" th:href="@{'/viajes/verMas?id=' + ${viaje.idViajes}}">Ver mas</a>
+                        <td><a class="btn btn-primary" th:href="@{'/viajes/nuevaMascota?id=' + ${viaje.idViajes}}">Nueva mascota</a>
+
+                        <td><a class="btn btn-primary" th:href="@{'/viajes/edit?id=' + ${viaje.idViajes}}">Editar</a>
                         </td>
-                        <td><a class="btn btn-danger" th:href="@{'/shipper/delete?id=' + ${shipper.shipperId}}">Borrar</a>
+                        <td><a class="btn btn-danger" th:href="@{'/viajes/borrar?id=' + ${viaje.idViajes}}">Borrar</a>
                         </td>
                     </tr>
                 </table>

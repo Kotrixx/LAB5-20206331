@@ -4,12 +4,12 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
-        <title>Lista Productos</title>
+        <title>Lista Lugares</title>
     </head>
     <body>
         <main>
             <div class="container px-4 py-5">
-                <h1 class="pb-2 border-bottom">Lista de Productos</h1>
+                <h1 class="pb-2 border-bottom">Lista de Lugares</h1>
                 <div class="d-flex mt-3 mb-4">
                     <a class="btn btn-primary" th:href="@{'/product/new'}">Nuevo Producto</a>
                     <a class="btn btn-secondary ms-auto" th:href="@{'/'}">Regresar</a>
@@ -21,30 +21,24 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Product Name</th>
-                            <th>Categoría</th>
-                            <th>Proveedor</th>
-                            <th>Precio Unitario</th>
-                            <th>Stock</th>
-                            <th>¿Descontinuado?</th>
+                            <th>Nombre</th>
+                            <th>Descripcion</th>
+                            <th>Fecha visita</th>
                             <th></th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="product, info : ${listaProductos}">
+                        <tr th:each="lugar, info : ${listaLugares}">
                             <td th:text="${info.index + 1}"></td>
-                            <td th:text="${product.productname}"></td>
-                            <td th:text="${product.category.categoryname}"></td>
-                            <td th:text="${product.supplier.companyname}"></td>
-                            <td th:text="${product.unitprice}"></td>
-                            <td th:text="${product.unitsinstock}"></td>
-                            <td th:text="${product.discontinued?'si':'no'}"></td>
+                            <td th:text="${lugar.nombreLugar}"></td>
+                            <td th:text="${lugar.descripLugar}"></td>
+                            <td th:text="${lugar.fechaLugar}"></td>
                             <td><a class="btn btn-primary"
-                                   th:href="@{'/product/edit?id=' + ${product.id}}">Editar</a>
+                                   th:href="@{'/lugares/edit?id=' + ${lugar.idLugares}}">Editar</a>
                             </td>
                             <td><a class="btn btn-danger"
-                                   th:href="@{'/product/delete?id=' + ${product.id}}">Borrar</a>
+                                   th:href="@{'/lugares/borrar?id=' + ${lugar.idLugares}}">Borrar</a>
                             </td>
                         </tr>
                     </tbody>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+        <title>Nuevo Viaje</title>
+    </head>
+    <body>
+        <main>
+            <div class="container px-4 py-5">
+                <h1 class="pb-2 mb-3 border-bottom">Nuevo Viaje</h1>
+                <form method="post" th:action="@{/viajes/guardar}" class="mt-2">
+                    <div class="mb-3">
+                        <label for="puntoRecojo" class="form-label">Punto de Recojo</label>
+                        <input type="text" class="form-control" name="puntoRecojo" id="puntoRecojo">
+                    </div>
+                    <div class="mb-3">
+                        <label for="cantPersonas" class="form-label">Cantidad de Personas</label>
+                        <input type="text" class="form-control" name="cantPersonas" id="cantPersonas">
+                    </div>
+                    <div class="mb-3">
+                        <label for="cantPerros" class="form-label">Punto de Recojo</label>
+                        <input type="text" class="form-control" name="cantPerros" id="cantPerros">
+                    </div>
+                    <div class="mb-3">
+                            <label for="lugar" class="form-label">Lugares</label>
+                        <select class="form-select" name="lugar" id="lugar">
+                            <option th:each="lugar: ${listaLugares}"
+                                    th:text="${lugar.nombreLugar}" th:value="${lugar.idLugares}"></option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="persona" class="form-label">Personas</label>
+                        <select class="form-select" name="persona" id="persona">
+                            <option th:each="personas: ${listaPersonas}"
+                                    th:text="${personas.nombre}" th:value="${personas.idPersona}"></option>
+                        </select>
+                    </div>
+                    <a th:href="@{/viajes}" class="btn btn-danger">Cancelar</a>
+                    <button type="submit" class="btn btn-primary">Registrar</button>
+                </form>
+            </div>
+        </main>
+        <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    </body>
+</html>
