@@ -37,7 +37,15 @@ public class MascotaController {
             return "redirect:/mascotas";
         }
     }
-
+    @RequestMapping(value = "/nuevo")
+    public String nuevaMascota(Model model){
+        return "mascotas/nuevo";
+    }
+    @PostMapping(value = "/guardarNuevo")
+    public String guardarNuevaMascota(Mascota mascota){
+        mascotaRepository.save(mascota);
+        return "/mascotas/nuevo";
+    }
     @PostMapping(value = "/guardar")
     public String actualizarMascota(Mascota mascota){
         mascotaRepository.actualizarMascota(mascota.getNombreMascota(),mascota.getVacunado(),mascota.getDesparasitado());

@@ -4,56 +4,38 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
-        <title>Nuevo Producto</title>
+        <title>Nueva Mascota</title>
     </head>
     <body>
         <main>
             <div class="container px-4 py-5">
-                <h1 class="pb-2 mb-3 border-bottom">Nuevo Producto</h1>
-                <form method="post" th:action="@{/templates/lugares/save}" class="mt-2">
+                <h1 class="pb-2 mb-3 border-bottom">Nueva Mascota</h1>
+                <form method="post" th:action="@{/mascotas/guardarNuevo}" class="mt-2">
                     <div class="mb-3">
-                        <label for="productname" class="form-label">Nombre del Producto</label>
-                        <input type="text" class="form-control" name="productname" id="productname">
-                    </div>
-                    <div class="mb-3">
-                        <label for="supplier" class="form-label">Proveedor</label>
-                        <select class="form-select" name="supplier" id="supplier">
-                            <option th:each="supplier: ${listaProveedores}"
-                                    th:text="${supplier.companyname}" th:value="${supplier.id}">Open this select menu</option>
-                        </select>
+                        <label for="nombreMascota" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" name="nombreMascota" id="nombreMascota">
                     </div>
                     <div class="mb-3">
-                        <label for="category" class="form-label">Categoría</label>
-                        <select class="form-select" name="category" id="category">
-                            <option th:each="categoria: ${listaCategorias}"
-                                    th:text="${categoria.categoryname}" th:value="${categoria.id}">Open this select menu</option>
-                        </select>
+                        <label for="genero" class="form-label">Genero</label>
+                        <input type="text" class="form-control" name="genero" id="genero">
                     </div>
                     <div class="mb-3">
-                        <label for="quantityperunit" class="form-label">Cantidad por unidad</label>
-                        <input type="text" class="form-control" name="quantityperunit" id="quantityperunit">
+                        <label for="edad" class="form-label">Edad</label>
+                        <input type="text" class="form-control" name="edad" id="edad">
                     </div>
                     <div class="mb-3">
-                        <label for="unitprice" class="form-label">Precio unitario</label>
-                        <input type="text" class="form-control" name="unitprice" id="unitprice">
+                        <label for="fechaVencimiento" class="form-label">Fecha Nacimiento</label>
+                        <input type="text" class="form-control" name="fechaVencimiento" id="fechaVencimiento">
                     </div>
                     <div class="mb-3">
-                        <label for="unitsinstock" class="form-label">Unidades en stock</label>
-                        <input type="number" class="form-control" name="unitsinstock" id="unitsinstock">
+                        <label for="vacunado" class="form-label">Vacunado (si/no)</label>
+                        <input type="text" class="form-control" name="vacunado" id="vacunado">
                     </div>
                     <div class="mb-3">
-                        <label for="unitsonorder" class="form-label">Unidades ordenadas</label>
-                        <input type="number" class="form-control" name="unitsonorder" id="unitsonorder">
+                        <label for="desparasitado" class="form-label">Desparasitado (si/no)</label>
+                        <input type="number" class="form-control" name="desparasitado" id="desparasitado">
                     </div>
-                    <div class="mb-3">
-                        <label for="reorderlevel" class="form-label">Nivel de reorden</label>
-                        <input type="number" class="form-control" name="reorderlevel" id="reorderlevel">
-                    </div>
-                    <div class="mb-3 pb-2 form-check">
-                        <input class="form-check-input" type="checkbox" name="discontinued" id="discontinued">
-                        <label class="form-check-label" for="discontinued">¿Descontinuado?</label>
-                    </div>
-                    <a th:href="@{/templates/lugares}" class="btn btn-danger">Cancelar</a>
+                    <a th:href="@{/mascotas}" class="btn btn-danger">Cancelar</a>
                     <button type="submit" class="btn btn-primary">Registrar</button>
                 </form>
             </div>
